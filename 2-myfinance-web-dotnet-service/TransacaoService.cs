@@ -1,3 +1,4 @@
+
 using myfinance_web_dotnet_domain.Entities;
 using myfinance_web_dotnet_infra;
 using myfinance_web_dotnet_service.Interfaces;
@@ -5,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace myfinance_web_dotnet_service
 {
-    public class PlanoContaService : IPlanoContaService
+    public class TransacaoService : ITransacaoService
     {
         private readonly MyFinanceDbContext _dbContext;
 
-        public PlanoContaService(MyFinanceDbContext dbContext)
+        public TransacaoService(MyFinanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public void Cadastrar(PlanoConta Entidade)
+        public void Cadastrar(Transacao Entidade)
         {
-            var dbSet = _dbContext.PlanoConta;
+            var dbSet = _dbContext.Transacao;
 
             if (Entidade.Id == null)
             {
@@ -32,24 +33,22 @@ namespace myfinance_web_dotnet_service
 
         public void Excluir(int Id)
         {
-            var PlanoConta = new PlanoConta() { Id = Id };
-            _dbContext.Attach(PlanoConta);
-            _dbContext.Remove(PlanoConta);
+            var transacao = new Transacao() { Id = Id };
+            _dbContext.Attach(transacao);
+            _dbContext.Remove(transacao);
             _dbContext.SaveChanges();
         }
         
-        public List<PlanoConta> ListarRegistros()
+        public List<Transacao> ListarRegistros()
         {
-            var dbSet = _dbContext.PlanoConta;
+            var dbSet = _dbContext.Transacao;
             return dbSet.ToList();
         }
         
-        public PlanoConta RetornarRegistro(int Id)
+        public Transacao RetornarRegistro(int Id)
         {
             throw new NotImplementedException();
-            //return _dbContext.PlanoConta.where(x =>  x.Id == Id).First();
-            //return _dbContext.PlanoConta.where(x => x.Id == Id).First();
-
+            //return _dbContext.Transacao.where(x => x.Id == Id).First();
         }
 
     }
