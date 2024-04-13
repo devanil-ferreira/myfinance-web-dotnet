@@ -46,10 +46,7 @@ namespace myfinance_web_dotnet_service
         
         public PlanoConta RetornarRegistro(int Id)
         {
-            throw new NotImplementedException();
-            //return _dbContext.PlanoConta.where(x =>  x.Id == Id).First();
-            //return _dbContext.PlanoConta.where(x => x.Id == Id).First();
-
+            return _dbContext.PlanoConta.Where(x => x.Id == Id).First();
         }
 
     }

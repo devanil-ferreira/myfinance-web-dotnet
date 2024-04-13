@@ -47,8 +47,7 @@ namespace myfinance_web_dotnet_service
         
         public Transacao RetornarRegistro(int Id)
         {
-            throw new NotImplementedException();
-            //return _dbContext.Transacao.where(x => x.Id == Id).First();
+            return _dbContext.Transacao.Where(x => x.Id == Id).First();
         }
 
     }
